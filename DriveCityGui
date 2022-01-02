@@ -1,0 +1,36 @@
+if game.CoreGui:FindFirstChild("ApexUI") then
+    game.CoreGui:FindFirstChild("ApexUI"):Destroy()
+end
+
+local lib = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigDaddylol/PureHub-ApexUILIB/main/ApexLib.lua'))() -- Ui Lib
+local prsntfrmtog = false
+
+lib.GameName = "Drive City | Made by Ham#1591"; -- GameName
+
+local Category = lib:Category('Main Hacks') -- Catergory You Can Change The Name To Anything You Want
+
+Category:Button('AntiAfk? (Might work. Trying out a new one.)', function() -- Text Button 
+    local bb = game:service "VirtualUser"
+    game:service "Players".LocalPlayer.Idled:connect(
+        function()
+            bb:CaptureController()
+            bb:ClickButton2(Vector2.new())
+        end
+    )
+end)
+
+Category:Toggle('Present Autofarm', -- Toggle
+    false, -- Default Toggle If You Change It To True It Will Be Enabled On Execute
+    function(state) -- The Var For True Or False You Can Change It To What You Want If You Want
+    prsntfrmtog = state
+
+    if prsntfrmtog then
+        repeat
+            for i, v in pairs(game.Workspace.Presents:GetChildren()) do
+                v:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+                wait()
+            end
+            wait()
+        until not prsntfrmtog
+    end
+end)
