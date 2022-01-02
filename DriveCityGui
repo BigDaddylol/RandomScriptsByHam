@@ -19,6 +19,8 @@ Category:Button('AntiAfk? (Might work. Trying out a new one.)', function() -- Te
     )
 end)
 
+Category:Label('I suggest doing /e dance3 whilst using the autofarm.') -- Text Label Just Normal Text
+
 Category:Toggle('Present Autofarm', -- Toggle
     false, -- Default Toggle If You Change It To True It Will Be Enabled On Execute
     function(state) -- The Var For True Or False You Can Change It To What You Want If You Want
@@ -27,7 +29,13 @@ Category:Toggle('Present Autofarm', -- Toggle
     if prsntfrmtog then
         repeat
             for i, v in pairs(game.Workspace.Presents:GetChildren()) do
-                v:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+                for d, c in pairs(v:GetChildren()) do
+                    if c.ClassName == "Part" then
+                        c.CanCollide = false
+                        wait()
+                    end
+                end
+                v:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0,5,0))
                 wait()
             end
             wait()
