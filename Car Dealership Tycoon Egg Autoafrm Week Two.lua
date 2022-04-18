@@ -6,7 +6,7 @@ end
 game:service("Players").LocalPlayer.Idled:Connect(afkidle)
 
 while wait(1) do
-    if game:GetService("Players").FoxysCove102.PlayerGui.EggHuntGuide.Enabled == true then
+    if game:GetService("Players").LocalPlayer.PlayerGui.EggHuntGuide.Enabled == true then
         if game.Players.LocalPlayer.Character.Humanoid.SeatPart ~= nil then
             game.Players.LocalPlayer.Character.Humanoid.Jump = true
             game:GetService("ReplicatedStorage").Remotes.ExitSeat:FireServer()
